@@ -5,7 +5,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.inject.Inject;
 import javax.inject.Named;
+
+import br.com.llealcruz.service.DocumentoService;
 
 @Named
 public class DocumentoVO {
@@ -15,12 +18,15 @@ public class DocumentoVO {
 	private BigDecimal movimento;
 	private BigDecimal juros;
 	private BigDecimal imposto;
-	private Date data;
+	private String data;
+	
+	@Inject
+	DocumentoService service;
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	DateFormat f = DateFormat.getDateInstance();
 
-	public DocumentoVO(BigDecimal credito, BigDecimal debito, BigDecimal movimento, BigDecimal juros, BigDecimal imposto, Date data) {
+	public DocumentoVO(BigDecimal credito, BigDecimal debito, BigDecimal movimento, BigDecimal juros, BigDecimal imposto, String data) {
 		super();
 		this.credito = credito;
 		this.debito = debito;
@@ -70,11 +76,11 @@ public class DocumentoVO {
 		this.imposto = imposto;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 }

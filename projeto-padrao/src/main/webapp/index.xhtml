@@ -5,186 +5,72 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-		crossorigin="anonymous" />
 </h:head>
 
 <h:body>
+
 	<h:form>
-
 		<h1>Começo da tabela</h1>
-		<p:dataTable var="Documentos"
-			value="#{documentoView.GerarTabelaDeDocumentos()}">
+		<h:panelGrid>
+			<p:dataTable id="tabDoc" var="Documentos"
+				value="#{documentoView.GerarTabelaDeDocumentos()}" reflow="true"
+				rows="5"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+				paginator="true">
 
-			<p:column headerText="Crédito">
-				<h:outputText value="#{Documentos.credito}" />
-			</p:column>
+				<f:facet name="{Exporters}">
+					<div style="float: right; padding-top: 5px;">
+						<h:commandLink>
+							<p:graphicImage name="/demo/images/excel.png" width="24" />
+							<p:dataExporter type="xls" target="tabDoc"
+								fileName="TabelaDeDocumentos"/>
+						</h:commandLink>
 
-			<p:column headerText="Movimento">
-				<h:outputText value="#{Documentos.movimento}" />
-			</p:column>
+						<h:commandLink>
+							<p:graphicImage name="/demo/images/xlsx.png" width="24" />
+							<p:dataExporter type="xlsxstream" target="tabDoc"
+								fileName="TabelaDeDocumentos" />
+						</h:commandLink>
 
-			<p:column headerText="Juros">
-				<h:outputText value="#{Documentos.juros}" />
-			</p:column>
+						<h:commandLink>
+							<p:graphicImage name="/demo/images/pdf.png" width="24" />
+							<p:dataExporter type="pdf" target="tabDoc"
+								fileName="TabelaDeDocumentos" />
+						</h:commandLink>
 
-			<p:column headerText="Imposto">
-				<h:outputText value="#{Documentos.imposto}" />
-			</p:column>
+						<h:commandLink>
+							<p:graphicImage name="/demo/images/csv.png" width="24" />
+							<p:dataExporter type="csv" target="tabDoc"
+								fileName="TabelaDeDocumentos" />
+						</h:commandLink>
+					</div>
+				</f:facet>
 
-			<p:column headerText="Débito">
-				<h:outputText value="#{Documentos.debito}" />
-			</p:column>
+				<p:column headerText="Crédito">
+					<h:outputText value="#{Documentos.credito}" />
+				</p:column>
 
-			<p:column headerText="Data">
-				<h:outputText value="#{Documentos.data}" />
-			</p:column>
-		</p:dataTable>
-		<h1>Fim da tabela</h1>
-	</h:form>
+				<p:column headerText="Movimento">
+					<h:outputText value="#{Documentos.movimento}" />
+				</p:column>
 
-	<h:form id="form">
-		<h:panelGrid columns="2" cellpadding="5">
-			<p:outputLabel for="orientation" value="Orientation:" />
-			<p:selectOneButton id="orientation"
-				value="#{megaMenuView.orientation}" onchange="$('#form').submit()">
-				<f:selectItem itemLabel="Horizontal" itemValue="horizontal" />
-				<f:selectItem itemLabel="Vertical" itemValue="vertical" />
-			</p:selectOneButton>
+				<p:column headerText="Juros">
+					<h:outputText value="#{Documentos.juros}" />
+				</p:column>
+
+				<p:column headerText="Imposto">
+					<h:outputText value="#{Documentos.imposto}" />
+				</p:column>
+
+				<p:column headerText="Débito">
+					<h:outputText value="#{Documentos.debito}" />
+				</p:column>
+
+				<p:column headerText="Data">
+					<h:outputText value="#{Documentos.data}" />
+				</p:column>
+			</p:dataTable>
 		</h:panelGrid>
 	</h:form>
-
-	<p:megaMenu orientation="#{megaMenuView.orientation}"
-		style="margin-top:20px">
-		<p:submenu label="TV" icon="pi pi-check">
-			<p:column>
-				<p:submenu label="TV.1">
-					<p:menuitem value="TV.1.1" url="#" />
-					<p:menuitem value="TV.1.2" url="#" />
-				</p:submenu>
-				<p:submenu label="TV.2">
-					<p:menuitem value="TV.2.1" url="#" />
-					<p:menuitem value="TV.2.2" url="#" />
-					<p:menuitem value="TV.2.3" url="#" />
-				</p:submenu>
-			</p:column>
-
-			<p:column>
-				<p:submenu label="TV.4">
-					<p:menuitem value="TV.4.1" url="#" />
-					<p:menuitem value="TV.4.2" url="#" />
-				</p:submenu>
-				<p:submenu label="TV.5">
-					<p:menuitem value="TV.5.1" url="#" />
-					<p:menuitem value="TV.5.2" url="#" />
-					<p:menuitem value="TV.5.3" url="#" />
-				</p:submenu>
-			</p:column>
-
-			<p:column>
-				<strong>Image</strong>
-				<p:graphicImage name="/demo/images/nature/nature1.jpg" width="200" />
-			</p:column>
-		</p:submenu>
-
-		<p:submenu label="Sports" icon="pi pi-file">
-
-			<p:column>
-				<p:submenu label="Sports.1">
-					<p:menuitem value="Sports.1.1" url="#" />
-					<p:menuitem value="Sports.1.2" url="#" />
-				</p:submenu>
-				<p:submenu label="Sports.2">
-					<p:menuitem value="Sports.2.1" url="#" />
-					<p:menuitem value="Sports.2.2" url="#" />
-					<p:menuitem value="Sports.2.3" url="#" />
-				</p:submenu>
-			</p:column>
-
-			<p:column>
-				<p:submenu label="Sports.4">
-					<p:menuitem value="Sports.4.1" url="#" />
-					<p:menuitem value="Sports.4.2" url="#" />
-				</p:submenu>
-				<p:submenu label="Sports.5">
-					<p:menuitem value="Sports.5.1" url="#" />
-					<p:menuitem value="Sports.5.2" url="#" />
-					<p:menuitem value="Sports.5.3" url="#" />
-				</p:submenu>
-			</p:column>
-			<p:column>
-				<p:submenu label="Sports.7">
-					<p:menuitem value="Sports.7.1" url="#" />
-					<p:menuitem value="Sports.7.2" url="#" />
-				</p:submenu>
-			</p:column>
-		</p:submenu>
-
-		<p:submenu label="Entertainment" icon="pi pi-pencil">
-			<p:column>
-				<p:submenu label="Entertainment.1">
-					<p:menuitem value="Entertainment.1.1" url="#" />
-					<p:menuitem value="Entertainment.1.2" url="#" />
-				</p:submenu>
-				<p:submenu label="Entertainment.2">
-					<p:menuitem value="Entertainment.2.1" url="#" />
-					<p:menuitem value="Entertainment.2.2" url="#" />
-					<p:menuitem value="Entertainment.2.3" url="#" />
-				</p:submenu>
-			</p:column>
-
-			<p:column>
-				<p:submenu label="Entertainment.4">
-					<p:menuitem value="Entertainment.4.1" url="#" />
-					<p:menuitem value="Entertainment.4.2" url="#" />
-				</p:submenu>
-				<p:submenu label="Entertainment.5">
-					<p:menuitem value="Entertainment.5.1" url="#" />
-					<p:menuitem value="Entertainment.5.2" url="#" />
-					<p:menuitem value="Entertainment.5.3" url="#" />
-				</p:submenu>
-			</p:column>
-		</p:submenu>
-
-		<p:submenu label="Tech" icon="pi pi-briefcase">
-			<p:column>
-				<p:submenu label="Tech.1">
-					<p:menuitem value="Tech.1.1" url="#" />
-					<p:menuitem value="Tech.1.2" url="#" />
-				</p:submenu>
-				<p:submenu label="Tech.2">
-					<p:menuitem value="Tech.2.1" url="#" />
-					<p:menuitem value="Tech.2.2" url="#" />
-					<p:menuitem value="Tech.2.3" url="#" />
-				</p:submenu>
-			</p:column>
-
-			<p:column>
-				<p:submenu label="Tech.4">
-					<p:menuitem value="Tech.4.1" url="#" />
-					<p:menuitem value="Tech.4.2" url="#" />
-				</p:submenu>
-			</p:column>
-		</p:submenu>
-
-		<p:menuitem value="Quit" url="http://www.primefaces.org"
-			icon="pi pi-times" />
-	</p:megaMenu>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-		crossorigin="anonymous"></script>
 </h:body>
 </html>
