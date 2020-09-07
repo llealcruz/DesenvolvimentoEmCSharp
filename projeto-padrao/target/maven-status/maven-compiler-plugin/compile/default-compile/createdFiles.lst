@@ -1,0 +1,3 @@
+br\com\llealcruz\service\DocumentoService.class
+br\com\llealcruz\repository\DocumentoVO.class
+br\com\llealcruz\view\DocumentoView.class

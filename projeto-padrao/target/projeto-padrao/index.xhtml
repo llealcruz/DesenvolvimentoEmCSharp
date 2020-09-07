@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form>
+	
+		<h1>Começo da tabela</h1>
+		<p:dataTable Documentos.="Documentos"
+			value="#{documentoView.GerarTabelaDeDocumentos()}" reflow="true"
+			rows="10" paginator="true">
+
+			<p:column headerText="Crédito">
+				<h:outputText value="#{Documentos.credito}" />
+			</p:column>
+
+			<p:column headerText="Movimento">
+				<h:outputText value="#{Documentos.movimento}" />
+			</p:column>
+
+			<p:column headerText="Juros">
+				<h:outputText value="#{Documentos.juros}" />
+			</p:column>
+
+			<p:column headerText="Imposto">
+				<h:outputText value="#{Documentos.imposto}" />
+			</p:column>
+
+			<p:column headerText="Débito">
+				<h:outputText value="#{Documentos.debito}" />
+			</p:column>
+			
+			<p:column headerText="Data">
+				<h:outputText value="#{Documentos.data}" />
+			</p:column>
+		</p:dataTable>
+		<h1>Fim da tabela</h1>
+	</h:form>
+</h:body>
+</html>
