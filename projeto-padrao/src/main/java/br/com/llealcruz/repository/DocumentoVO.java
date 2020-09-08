@@ -13,6 +13,7 @@ import br.com.llealcruz.service.DocumentoService;
 @Named
 public class DocumentoVO {
 
+	private String tipo;
 	private BigDecimal credito;
 	private BigDecimal debito;
 	private BigDecimal movimento;
@@ -26,7 +27,7 @@ public class DocumentoVO {
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	DateFormat f = DateFormat.getDateInstance();
 
-	public DocumentoVO(BigDecimal credito, BigDecimal debito, BigDecimal movimento, BigDecimal juros, BigDecimal imposto, String data) {
+	public DocumentoVO(String tipo, BigDecimal credito, BigDecimal debito, BigDecimal movimento, BigDecimal juros, BigDecimal imposto, String data) {
 		super();
 		this.credito = credito;
 		this.debito = debito;
@@ -34,6 +35,15 @@ public class DocumentoVO {
 		this.juros = juros;
 		this.imposto = imposto;
 		this.data = data;
+		this.tipo = tipo;
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public BigDecimal getCredito() {

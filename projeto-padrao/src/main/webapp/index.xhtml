@@ -11,66 +11,56 @@
 
 	<h:form>
 		<h1>Começo da tabela</h1>
-		<h:panelGrid>
-			<p:dataTable id="tabDoc" var="Documentos"
-				value="#{documentoView.GerarTabelaDeDocumentos()}" reflow="true"
-				rows="5"
-				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-				paginator="true">
+		<p:dataTable id="tabDoc" var="Documentos"
+			value="#{documentoView.documentos}" reflow="true" rows="10"
+			paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+			paginator="true" paginatorPosition="bottom">
 
-				<f:facet name="{Exporters}">
-					<div style="float: right; padding-top: 5px;">
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/excel.png" width="24" />
-							<p:dataExporter type="xls" target="tabDoc"
-								fileName="TabelaDeDocumentos"/>
-						</h:commandLink>
 
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/xlsx.png" width="24" />
-							<p:dataExporter type="xlsxstream" target="tabDoc"
-								fileName="TabelaDeDocumentos" />
-						</h:commandLink>
+			<p:column headerText="Tipo" sortBy="Documentos.tipo"
+				style="text-align:center">
+				<h:outputText value="#{Documentos.tipo}" />
+			</p:column>
 
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/pdf.png" width="24" />
-							<p:dataExporter type="pdf" target="tabDoc"
-								fileName="TabelaDeDocumentos" />
-						</h:commandLink>
+			<p:column headerText="Crédito" sortBy="Documentos.credito"
+				style="text-align:right">
+				<h:outputText value="R$ #{Documentos.credito}" />
+			</p:column>
 
-						<h:commandLink>
-							<p:graphicImage name="/demo/images/csv.png" width="24" />
-							<p:dataExporter type="csv" target="tabDoc"
-								fileName="TabelaDeDocumentos" />
-						</h:commandLink>
-					</div>
-				</f:facet>
+			<p:column headerText="Movimento" sortBy="Documentos.movimento"
+				style="text-align:right">
+				<h:outputText value="R$ #{Documentos.movimento}" />
+			</p:column>
 
-				<p:column headerText="Crédito">
-					<h:outputText value="#{Documentos.credito}" />
+			<p:column headerText="Juros" sortBy="Documentos.juros"
+				style="text-align:right">
+				<h:outputText value="R$ #{Documentos.juros}" />
+			</p:column>
+
+			<p:column headerText="Imposto" sortBy="Documentos.imposto"
+				style="text-align:right">
+				<h:outputText value="R$ #{Documentos.imposto}" />
+			</p:column>
+
+			<p:column headerText="Débito" sortBy="Documentos.debito"
+				style="text-align:right">
+				<h:outputText value="R$ #{Documentos.debito}" />
+			</p:column>
+
+			<p:column headerText="Data" sortBy="Documentos.data"
+				style="text-align:right">
+				<h:outputText value="#{Documentos.data}" />
+			</p:column>
+			<p:summaryRow>
+				<p:column colspan="3">
+					<h:outputText value="Total:" />
 				</p:column>
-
-				<p:column headerText="Movimento">
-					<h:outputText value="#{Documentos.movimento}" />
+				<p:column>
+					<h:outputText value="#{documentoView.totalDeDebitos}">
+					</h:outputText>
 				</p:column>
-
-				<p:column headerText="Juros">
-					<h:outputText value="#{Documentos.juros}" />
-				</p:column>
-
-				<p:column headerText="Imposto">
-					<h:outputText value="#{Documentos.imposto}" />
-				</p:column>
-
-				<p:column headerText="Débito">
-					<h:outputText value="#{Documentos.debito}" />
-				</p:column>
-
-				<p:column headerText="Data">
-					<h:outputText value="#{Documentos.data}" />
-				</p:column>
-			</p:dataTable>
-		</h:panelGrid>
+			</p:summaryRow>
+		</p:dataTable>
 	</h:form>
 </h:body>
 </html>

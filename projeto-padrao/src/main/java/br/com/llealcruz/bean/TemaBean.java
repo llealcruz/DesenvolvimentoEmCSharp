@@ -28,7 +28,7 @@ public class TemaBean implements Serializable {
 		temas.put("Sam", "sam");
 		temas.put("UI-Lightness", "ui-lightness");
 		temas.put("Blitzer", "blitzer");
-		tema = "blitzer";
+		tema = "cupertino";
 	}
 
 	public Map<String, String> getTemas() {
