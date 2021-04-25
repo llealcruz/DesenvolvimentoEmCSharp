@@ -1,4 +1,3 @@
-# PROJETOS EM DESENVOLVIMENTO 
+# PROJETOS SIMPLES EM WEB FORMS
 
-Projetos que eu crio enquanto estudo.
-C#, HTML, CSS
+C#, HTML e CSS.
